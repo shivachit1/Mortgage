@@ -7,6 +7,7 @@ public class Mortgage {
    private double loanAmount;
    private double interestRate;
    private double years;
+   private double monthlyPayment;
 
     public Mortgage(String name, double loanAmount, double interestRate, double years) {
         this.name = name;
@@ -45,6 +46,14 @@ public class Mortgage {
 
     public void setYears(double years) {
         this.years = years;
+    }
+
+    public double getMonthlyPayment() {
+        return monthlyPayment;
+    }
+
+    public void setMonthlyPayment(double monthlyPayment) {
+        this.monthlyPayment = monthlyPayment;
     }
 
     public double calculate(){

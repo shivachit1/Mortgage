@@ -8,7 +8,7 @@ import com.mongodb.client.MongoDatabase;
 import org.bson.Document;
 
 public class MortgageDao {
-    private MongoDatabase mongoDatabase;
+    private final MongoDatabase mongoDatabase;
 
     public MortgageDao(String databaseName) {
         MongoClientURI connectionString = new MongoClientURI("mongodb://localhost:27017");
@@ -23,12 +23,11 @@ public class MortgageDao {
     public void saveMortgageResult(Mortgage mortgage) {
 
         MongoCollection<Document> collection = mongoDatabase.getCollection("mortgages");
-
         Document document = new Document("name",mortgage.getName())
                 .append("loanAmount",mortgage.getLoanAmount())
                 .append("interestRate",mortgage.getInterestRate())
                 .append("years",mortgage.getYears())
-                .append("monthlyPayment",mortgage.calculate());
+                .append("monthlyPayment",mortgage.getMonthlyPayment());
         collection.insertOne(document);
     }
 

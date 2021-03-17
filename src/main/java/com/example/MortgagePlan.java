@@ -42,13 +42,12 @@ public class MortgagePlan {
                     double years = Double.parseDouble(userFields[3]);
 
                     Mortgage mortgage = new Mortgage(name,loanAmount,interestRate,years);
-                    // calculation on monthly payment
-                    double monthlyPay = mortgage.calculate();
+                    mortgage.setMonthlyPayment(mortgage.calculate());
 
                     MortgageDao mortgageDao = new MortgageDao("mortgage");
                     mortgageDao.saveMortgageResult(mortgage);
 
-                    String result = "Prospect "+ i+": "+ mortgage.getName()+" wants to borrow "+ mortgage.getLoanAmount()+ "€ for a period of "+ years+ " years and pay "+ monthlyPay +"€ each month";
+                    String result = "Prospect "+ i+": "+ mortgage.getName()+" wants to borrow "+ mortgage.getLoanAmount()+ "€ for a period of "+ years+ " years and pay "+ mortgage.getMonthlyPayment() +"€ each month";
                     asterisk = "";
                     int asteriskCount = 0;
                     int asteriskLengthToBe = result.length();

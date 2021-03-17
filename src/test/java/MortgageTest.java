@@ -11,7 +11,8 @@ public class MortgageTest {
     @DisplayName("Calculating Monthly Payment with all positive values")
     public void testCalculation(){
         Mortgage mortgage = new Mortgage("John",1000,10,1);
-        assertEquals(87.92,mortgage.calculate());
+        mortgage.setMonthlyPayment(mortgage.calculate());
+        assertEquals(87.92,mortgage.getMonthlyPayment());
     }
 
     @Test
