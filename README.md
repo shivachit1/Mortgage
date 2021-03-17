@@ -6,6 +6,7 @@ For web interface React is used as Front-end.
 ### Tools Used
 - **Front-end : React**
 - **Server : Tomcat 9.0.44**
+- **JDK : jdk1.8.0_144.jdk**
 - **Build plugin : Maven**
   - **maven-war-plugin**
   - **version 3.3.0**
