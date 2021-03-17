@@ -18,6 +18,9 @@ public class MortgagePlanTest {
     @DisplayName("Running test Before all other tests")
     @BeforeAll
     static void init(){
+        File prospectsFile = new File("src/prospects.txt");
+        assertTrue(prospectsFile.exists());
+
         File resultFile = new File("src/result.txt");
         if (resultFile.exists()) {
             assertTrue(resultFile.delete());
@@ -50,8 +53,6 @@ public class MortgagePlanTest {
     @Test
     @DisplayName("Running Main function ")
     public void runMainFunction() throws IOException {
-        File prospectsFile = new File("src/prospects.txt");
-        assertTrue(prospectsFile.exists());
         MortgagePlan.main(new String[] {"arg1", "arg2", "arg3"});
     }
 
