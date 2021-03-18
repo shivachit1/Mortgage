@@ -2,14 +2,14 @@ package com.example.model;
 import java.text.DecimalFormat;
 import com.example.MathUtil;
 
-public class Mortgage {
+public class Customer {
    private String name;
    private double loanAmount;
    private double interestRate;
    private double years;
    private double monthlyPayment;
 
-    public Mortgage(String name, double loanAmount, double interestRate, double years) {
+    public Customer(String name, double loanAmount, double interestRate, double years) {
         this.name = name;
         this.loanAmount = loanAmount;
         this.interestRate = interestRate;
@@ -73,4 +73,8 @@ public class Mortgage {
        return monthlyPay;
     }
 
+    @Override
+    public String toString() {
+        return name + " wants to borrow " + loanAmount + "€ for a period of " + years + " years and pay " + monthlyPayment + "€ each month";
+    }
 }

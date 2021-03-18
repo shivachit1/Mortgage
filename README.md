@@ -38,7 +38,7 @@ For web interface React is used as Front-end.
 
      git clone https://github.com/shivachit1/Mortgage.git
   ### 2. **Open the Project with IDE**
-  I am using Intellij IDEA IDE to build this project and run it. So I will talk how to build and run using it. 
+  I am using Intellij IDEA IDE for development and maven to build this project and run it. So I will talk how to build and run using it. 
 
   ### 3. **Download Tomcat Server**
   I am using **Tomcat 9.0.44** as a server for this application. So in order to run this application you have to download and configure your tomcat server to the project.
@@ -101,7 +101,7 @@ Now the steps after that:
         mongodb://localhost:27017
 
 ### 6. **Redeploy the changes to your Tomcat server**
- 1. Now you can see the server is restarted and browser is opened with url http://locahost:8080/mortgage
+ 1. Now you can see the server is restarted and browser is opened with url http://locahost:8080/customer
         </br>
     </br>
     </br>
@@ -110,9 +110,9 @@ Now the steps after that:
     </br>
     </br>
     </br>
- 2. Now you can fill the form and hit calculate it will show you results.
+ 2. Now you can fill the form and click calculate button. it will give you the results.
     </br>
- 3. You can also see the mongo database creates a new database **mortgage** and saved the data in **mortgages** collection.
+ 3. You can also see the mongo database creates a new database **mortgage** and saved the data in **customers** collection.
 
 
 # Testing the application
@@ -133,9 +133,9 @@ All the testing files are located in src/test/java folder.
    - **Fifth Test was to check if the MathUtil.power method returns -2<sup>0</sup> as 1.**
    - **Sixth Test was to check if the MathUtil.power method returns 2<sup>-2</sup> as 0.25.**
 
-### 2. Mortgage class calculation Test (Mortgage.java)
+### 2. Customer class calculate method Test (Customer.java)
 
-![](assests/MortgageClassTest.png)
+![](assests/customerClassTest.png)
 
 - First Test was to check if the calculation returns exact value when ***loan amount, Interest rate and years*** are positive numbers
 - Second Test was to check if the calculation when ***interest rate*** was assigned as ***zero*** throws error message ***"Interest rate should be greater than zero".***
@@ -146,36 +146,36 @@ All the testing files are located in src/test/java folder.
 - Seventh Test was to check if the calculation when ***years*** was assigned as ***negative*** throws error message ***"Years should be greater than zero".***
 
 
-### 3. Database connection and save process test. (MortgageDaoTest.java)
+### 3. Database connection and save process test. (CustomerServiceTest.java)
 
 ![](assests/database.png)
 
 - Before all test
-  - deleting ***testMortgages*** database.
+  - deleting ***testMortgage*** database.
     
 - Testing data save
-  - Creating new mortgage object
+  - Creating new customer object
   - Making monthly payment calculation and saving all values to database.
   - Testing if the ***testMortgage*** database is created 
-  -  Testing new mortgage data is saved inside ***mortgages*** collection.
+  -  Testing new customer data is saved inside ***customers*** collection.
 - After all test, 
-  - deleting ***testMortgages*** database.
-  - checking if the ***testMortgages*** database is deleted.
+  - deleting ***testMortgage*** database.
+  - checking if the ***testMortgage*** database is deleted.
 
-### 3. Testing MortgagePlan class Main function. (MortgagePlanTest.java)
+### 3. Testing App.java Main function.
 
-![](assests/MortgagePlanTest.png)
+![](assests/app-test.png)
 
 - Before all test, 
   - checking if ***src/prospects.txt*** exists.
   - checking if ***src/result.txt*** exists, if exists delete it.
   - checking if ***mortgage*** database exists and saving data in temporary variable and deleting whole database.
     
-- Running main function.
+- Running App main function.
   
 - Testing after all test (after main function is completed).
     - testing if ***src/result.txt*** is created and exists.
-    - checking if the ***mortgage*** database has only 4 data value from the prospects file.
+    - checking if the ***mortgage*** database has only 4 customers value from the prospects file.
     - deleting the ***mortgage*** database and storing all the previous data to database.
 
 

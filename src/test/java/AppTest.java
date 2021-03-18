@@ -1,5 +1,5 @@
-import com.example.MortgagePlan;
-import com.example.dao.MortgageDao;
+import com.example.App;
+import com.example.services.CustomerService;
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import org.bson.Document;
@@ -10,8 +10,8 @@ import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class MortgagePlanTest {
-    static MortgageDao mortgageDao;
+public class AppTest {
+    static CustomerService customerService;
     static ArrayList<Document> databaseData = new ArrayList<>();
 
     @Test
@@ -26,34 +26,34 @@ public class MortgagePlanTest {
             assertTrue(resultFile.delete());
         }
 
-        mortgageDao = new MortgageDao("mortgage");
-        MongoCollection<Document> collection = mortgageDao.getMongoDatabase().getCollection("mortgages");
-        FindIterable<Document> mortgages =  collection.find();
-        for (Document mortgage : mortgages) {
-            databaseData.add(mortgage);
+        customerService = new CustomerService("mortgage");
+        MongoCollection<Document> collection = customerService.getMongoDatabase().getCollection("customers");
+        FindIterable<Document> customers =  collection.find();
+        for (Document customer : customers) {
+            databaseData.add(customer);
         }
-        mortgageDao.getMongoDatabase().drop();
-        assertEquals(0,mortgageDao.getCollectionCount());
+        customerService.getMongoDatabase().drop();
+        assertEquals(0, customerService.getCollectionCount());
     }
 
     @Test
     @DisplayName("Running test after all other tests")
     @AfterAll
     public static void cleanUp(){
-        assertEquals(4,mortgageDao.getCollectionCount());
-        MongoCollection<Document> collection = mortgageDao.getMongoDatabase().getCollection("mortgages");
+        assertEquals(4, customerService.getCollectionCount());
+        MongoCollection<Document> collection = customerService.getMongoDatabase().getCollection("customers");
 
         if(databaseData.size()!=0){
             collection.drop();
             collection.insertMany(databaseData);
-            assertEquals(databaseData.size(),mortgageDao.getCollectionCount());
+            assertEquals(databaseData.size(), customerService.getCollectionCount());
         }
     }
 
     @Test
     @DisplayName("Running Main function ")
     public void runMainFunction() throws IOException {
-        MortgagePlan.main(new String[] {"arg1", "arg2", "arg3"});
+        App.main(new String[] {"arg1", "arg2", "arg3"});
     }
 
 }
