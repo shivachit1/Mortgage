@@ -101,7 +101,7 @@ Now the steps after that:
         mongodb://localhost:27017
 
 ### 6. **Redeploy the changes to your Tomcat server**
- 1. Now you can see the server is restarted and browser is opened with url http://locahost:8080/customer
+ 1. Now you can see the server is restarted and browser is opened with url http://locahost:8080/mortgage
         </br>
     </br>
     </br>
